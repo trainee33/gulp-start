@@ -1,0 +1,54 @@
+.team {
+  position: relative;
+  background-color: #484283;
+  // .team__title
+  &__title {
+    color: #fff;
+  }
+
+  // .team__body
+  &__body {
+    position: relative;
+    z-index: 2;
+    @include row-flex();
+  }
+
+  // .team__item
+  &__item {
+    @include col();
+    @include size(4);
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;  
+  }
+  &-bg{
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+.item-team {
+  
+  color: #fff;
+  // .item-team__img
+  &__img {
+    width: 100%;
+    height: auto; 
+    border-radius: 5px;   
+    margin-bottom: 20px;
+  }
+
+  // .item-team__name
+  &__name {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 24px;
+    margin-bottom: 20px;
+  }
+
+  // .item-team__job
+  &__job {
+    font-size: 16px;
+    line-height: 16px;
+  }
+}

@@ -1,0 +1,278 @@
+@use "sass:math";
+//ПЕРЕМЕННЫЕ>===========================================================================================================
+$minWidth: 320px;
+$maxWidth: 1440px;
+$maxWidthContainer: 1110px;
+
+$mainColor:#000;
+$orangeColor:#e89F71;
+$grayColor:#898989;
+$darkGrayColor:#616161;
+//<МИКСИНЫ>===============================================================================================
+@import "mixins";
+
+//<Подключаем шрифты>=======================================================================================
+//&display=swap&subset=cyrillic-ext
+@import "fonts";
+
+//<Шрифт по умолчанию>==========================================================================================
+$fontFamily: "Montserrat";
+$fontSize: 16px;
+
+//</ОСНОВНАЯ СЕТКА>===========================================================================================================
+@import "reset.scss";
+@import "smart-grid.scss";
+// @import "swiper.scss";
+// @import "_noUiSlider.scss";
+// @import "choices.scss";
+
+//<ПОДКЛЮЧЕНИЕ ФАЙЛОВ UI СТИЛЕЙ, ФОРМ И ГОТОВЫХ КЛАССОВ>====================================================================================================
+//@import "forms";
+//@import "ui";
+
+//</ОБОЛОЧКА>==============================
+.wrapper {
+  @include wrapper();
+}
+
+//<ОСНОВНОЙ БЛОК>====================================================================================================
+html {
+	box-sizing: border-box;
+	scroll-behavior: smooth;
+}
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+body {
+	width: 100%;
+	min-width: 320px;
+	color: $mainColor;
+	font-size: $fontSize;
+	line-height: 17px;
+  font-family: $fontFamily, sans-serif;
+	font-weight: 400;
+}
+a {
+	outline: none;
+	text-decoration: none;
+	list-style: none;
+}
+.hidden {
+	visibility: hidden;
+}
+picture {
+	box-sizing: border-box;
+	overflow: hidden;
+}
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+.input,
+input {
+	width: 100%;
+	display: block;
+  border: none; 
+	padding: 0 20px;
+}
+textarea.input {
+	resize: none;
+	padding: 0px 0px;
+}
+._ibg {
+	position: relative;
+	img {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		object-fit: cover;
+	}
+}
+body._lock{
+  overflow: hidden;
+}
+body._ie {
+	._ibg {
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
+	._ibg img {
+		width: 0;
+		height: 0;
+		opacity: 0;
+		visibility: hidden;
+	}
+}
+.btn-reset {
+	border: none;
+	background-color: transparent;
+	padding: 0;
+	margin: 0;
+  cursor: pointer;
+}
+.visibility-hidden{
+  visibility: hidden;
+}
+.btn{
+  display: inline-flex;
+  padding: 24px 34px;
+  background-color: #FF7900;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.12);
+  border-radius: 60px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 11px;
+  line-height: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  align-self: start;
+  transition: background-color 0.3s ease 0s;
+  @media (any-hover: hover) {
+    &:hover{
+      background-color: #d46504;
+    }
+  }  
+}
+// .section-header {
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+//   margin: 0px 0px 70px 0px;
+//   min-width: 100%;
+//   @media (max-width: 980px) {
+//     flex-direction: column;
+//     align-items: flex-start;
+//   }
+// }
+// .section-desc {
+//   position: relative;
+//   font-family: 'Inter';
+//   font-style: italic;
+//   font-size: 15px;
+//   line-height: 180%;
+//   color: #616161;
+//   max-width: 385px;
+//   padding-left: 30px;
+//   @media (max-width: 560px) {
+//     padding: 0;
+//   }
+//   &::after{
+//     position: absolute;
+//     content: '';
+//     top: 5px;
+//     left: 0;
+//     height: 90%;
+//     width: 3px;
+//     background-color: #9C8679;
+//     @media (max-width: 560px) {
+//       display: none;
+//     }
+//   }
+// }
+._title{
+  font-weight: 800;
+  @include adaptiv-value('font-size', 38, 30, 1);
+  line-height: 50px;
+  color: #000000;
+  span{
+    color: #00ADEF;
+  }  
+}
+// .hero-arrows,
+// .about-arrows{
+//   position: absolute;
+//   top: 0;
+//   left: 45%;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: space-between;
+//   z-index: 99;
+//   height: 100%;
+//   @media (max-width: 560px) {
+//     flex-direction: row;
+//     top: 30%;
+//     flex: 1 1 100%;
+//     width: 100%;
+//     left: 0;
+//   }
+//     &__prev,
+//     &__next{
+//     width: 26px;
+//     height: 26px;
+//     border-radius: 50%;
+//     background-color: #fff;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     cursor: pointer;
+//     box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.12);
+//     @media (any-hover: hover) {
+//       &:hover{
+//         background-color: #9C8679;
+//         svg{
+//           stroke: #FFFFFF;
+//         }
+//       }
+//     }
+//     svg{
+//       width: 18px;
+//       height: 15px;
+//       stroke: #9C8679;
+//     }  
+//   }
+//     &__prev{
+//       svg{
+//         transform: rotate(-180deg);
+//         @media (max-width: 560px) {
+//           transform: rotate(90deg);
+//         }        
+//       }
+//     }
+//     &__next{
+//       svg{
+//         @media (max-width: 560px) {
+//           transform: rotate(-90deg);
+//         }        
+//       }
+//     }
+// }
+// .swiper-slide-active{
+//   background-color: rgba(225, 255, 255, 0.2);
+//   @media (max-width: 560px) {
+//     background-color: inherit;
+//   }  
+// }
+.rub:after {
+	content: "₽";
+  font-size: 18px;
+}
+[class*="copyrights-pane"]{
+  display: none!important;
+}
+// ._tabs-block{
+//   opacity: 0;
+//   visibility: hidden;
+//   height: 0;
+//   transition: opacity 1.5s ease 0s;
+// }
+// ._active{
+//   opacity: 1;
+//   visibility: visible;
+//   height: auto;
+//   transition: opacity 1.5s ease 0s;
+// }
+//<ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>====================================================================================================
+//@import "popup";
+@import "header";
+// @import "footer";
+
+//==================================================
